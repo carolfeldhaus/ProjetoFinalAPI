@@ -30,8 +30,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(self.tabelaFilmes)
         self.title = "Movie Details"
-        self.view.backgroundColor = UIColor.meuRoxo()
-        self.tabelaFilmes.backgroundColor = .clear
+        self.view.backgroundColor = UIColor.meuRosa()
+        self.tabelaFilmes.backgroundColor = .meuRosa()
        
         //verifyFavorite()
     }
