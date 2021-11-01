@@ -32,6 +32,9 @@ class FavoritesViewController: UIViewController {
         
         view.addSubview(self.tabelaFilmes)
         
+        self.view.backgroundColor = UIColor.meuRosa()
+        self.tabelaFilmes.backgroundColor = .meuRosa()
+        
         let nibFavorite = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
         tabelaFilmes.register(nibFavorite, forCellReuseIdentifier: FavoriteTableViewCell.favoriteCell)
         
@@ -90,7 +93,10 @@ extension FavoritesViewController: UITableViewDataSource {
                 return cell!
     }
 
-
+    //configurando o tamanho da linha
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 146.0
+        }
 }
 
 extension FavoritesViewController: UITableViewDelegate {
@@ -103,11 +109,14 @@ extension FavoritesViewController: UITableViewDelegate {
         var imagemovie = ImageFilme()
         imagemovie.url = favEntity.cdimage
         
+        var imagebanner = ImageFilme()
+        imagebanner.url = favEntity.cdmovie_banner
+        
         var newTouched: studioGhibli = studioGhibli()
         newTouched.title = favEntity.cdtitle
         newTouched.original_title = favEntity.cdoriginal_title
         newTouched.image = imagemovie.url
-        newTouched.movie_banner = imagemovie.url
+        newTouched.movie_banner = imagebanner.url
         newTouched.description = favEntity.description
         newTouched.director = favEntity.cddirector
         newTouched.producer = favEntity.cdproducer

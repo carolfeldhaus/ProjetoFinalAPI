@@ -10,6 +10,7 @@ import Foundation
 class studioGhibli: Codable {
  
     enum SubstituicoesCodigos : String, CodingKey {
+        case id
         case title
         case original_title
         case image
@@ -22,6 +23,7 @@ class studioGhibli: Codable {
         case rt_score
     }
     
+        var id: String?
         var title: String?
         var original_title: String?
         var image: String?

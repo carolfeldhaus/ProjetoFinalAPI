@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         footer.backgroundColor = .meuRoxo()
         tabelaFilmes.tableFooterView = footer
         
-        //verifyFavorite()
+        verifyFavorite()
     }
     
 }
@@ -132,12 +132,14 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func setCellOkFavorites() -> UITableViewCell {
+    func setCellRemoveFavorites() -> UITableViewCell {
         let cell = FavoriteTableViewCell()
          
+        cell.imageView?.image = UIImage(systemName: "star.slash.fill")
+        cell.imageView?.tintColor = .yellow
         cell.detailTextLabel?.textColor = .white
         cell.textLabel?.textAlignment = .center
-        cell.textLabel?.text = "Is already add!"
+        cell.textLabel?.text = "Remove to favorites"
         cell.backgroundColor = .meuRoxo()
          
          return cell
@@ -153,7 +155,7 @@ extension DetailViewController: UITableViewDelegate {
         
        if indexPath.row == 10 {
            if isFavorite {
-               setCellOkFavorites()
+               setCellRemoveFavorites()
            } else {
                addFavorites()
            }
@@ -166,7 +168,7 @@ extension DetailViewController: UITableViewDelegate {
     func showFavoriteButton() -> UITableViewCell {
         
             if isFavorite {
-                return self.setCellOkFavorites()
+                return self.setCellRemoveFavorites()
             } else {
                 return self.setCellAddFavorites()
             }
@@ -179,11 +181,11 @@ extension DetailViewController: UITableViewDelegate {
         
         do {
             
-            guard let movieidentifier = sGTocado.title else { return }
+            guard let cdid = sGTocado.id else { return }
             
             let fetchRequest = InfosFilmesCD.fetchRequest()
             
-            let predicate = NSPredicate(format: "movieidentifier == %@", movieidentifier)
+            let predicate = NSPredicate(format: "cdid == %@", cdid)
             fetchRequest.predicate = predicate
             
             let favoritefilm = try context.fetch(fetchRequest)
