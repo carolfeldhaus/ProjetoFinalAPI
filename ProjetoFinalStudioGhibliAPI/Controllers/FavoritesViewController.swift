@@ -107,13 +107,7 @@ extension FavoritesViewController: UITableViewDataSource {
 //MARK: UITableViewDelegate
 extension FavoritesViewController: UITableViewDelegate {
    
-//deletar dos favoritos
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        self.favoriteSG.remove(at: indexPath.row)
-        tabelaFilmes.reloadData()
-    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
         
@@ -142,6 +136,14 @@ extension FavoritesViewController: UITableViewDelegate {
         
         self.show(detail, sender: self)
     }
+    
+    //deletar dos favoritos
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            
+            self.favoriteSG.remove(at: indexPath.row)
+            tabelaFilmes.reloadData()
+        }
+        
 }
 
 
