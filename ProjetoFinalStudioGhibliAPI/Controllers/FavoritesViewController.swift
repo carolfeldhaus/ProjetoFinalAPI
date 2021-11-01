@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class FavoritesViewController: UIViewController {
 
@@ -20,7 +21,6 @@ class FavoritesViewController: UIViewController {
         tabela.dataSource = self
         tabela.delegate = self
         tabela.separatorStyle = .none
-     //   tabela.register(TableHeader.self, forHeaderFooterViewReuseIdentifier: "header)
 
         return tabela
 
@@ -70,19 +70,24 @@ extension FavoritesViewController: UITableViewDataSource {
         
         let favfilm = favoriteSG[indexPath.row]
         
-        cell?.accessoryType = .disclosureIndicator
-        
         cell?.uiTitleFav.text = favfilm.cdtitle
   
     if let image = favfilm.cdimage {
-            guard let url = URL(string: image) else { return UITableViewCell() }
-                let data = try? Data(contentsOf: url)
-                cell?.uiImageFav.image = UIImage(data: data!)
-        } else {
-           print("Error")
-        }
         
-        return cell!
+            guard let url = URL(string: image) else { return UITableViewCell() }
+        
+        //usando kingfisher para configurar a imagem
+                    cell?.uiImageFav.kf.setImage(with: url, options: [.transition(ImageTransition.fade(2.0)), .cacheOriginalImage],
+                                                  progressBlock: nil, completionHandler: { resultado in
+                            switch resultado {
+                            case .success(let image):
+                                print(image.cacheType)
+                            case .failure(let erro):
+                                print(erro.localizedDescription)
+                            }
+                        })
+                }
+                return cell!
     }
 
 
@@ -109,10 +114,12 @@ extension FavoritesViewController: UITableViewDelegate {
         newTouched.release_date = favEntity.cdrelease_date
         newTouched.running_time = favEntity.cdrunning_time
         newTouched.rt_score = favEntity.cdrt_score
+        newTouched.description = favEntity.cddescription
         
         detail.sGTocado = newTouched
         
         self.show(detail, sender: self)
     }
 }
+
 

@@ -20,7 +20,6 @@ class DetailViewController: UIViewController {
         tabela.dataSource = self
         tabela.delegate = self
         tabela.separatorStyle = .none
-     //   tabela.register(TableHeader.self, forHeaderFooterViewReuseIdentifier: "header)
 
         return tabela
 
@@ -118,7 +117,8 @@ extension DetailViewController: UITableViewDataSource {
         
         return cell
     }
-   
+
+//configurando os botoes de adicionar e remover fav
     func setCellAddFavorites() -> UITableViewCell {
        let cell = FavoriteTableViewCell()
         
@@ -129,18 +129,16 @@ extension DetailViewController: UITableViewDataSource {
         cell.textLabel?.text = "Add to favorites"
         cell.backgroundColor = .meuRoxo()
         
-        
         return cell
     }
     
-    func setCellRemoveFavorites() -> UITableViewCell {
+    func setCellOkFavorites() -> UITableViewCell {
         let cell = FavoriteTableViewCell()
          
-        cell.imageView?.image = UIImage(systemName: "star.slash.fill")
-        cell.imageView?.tintColor = .meuRoxo()
-         
-        cell.textLabel?.text = "Remove to favorites"
-         
+        cell.detailTextLabel?.textColor = .white
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.text = "Is already add!"
+        cell.backgroundColor = .meuRoxo()
          
          return cell
     }
@@ -155,7 +153,7 @@ extension DetailViewController: UITableViewDelegate {
         
        if indexPath.row == 10 {
            if isFavorite {
-               removeFavorite()
+               setCellOkFavorites()
            } else {
                addFavorites()
            }
@@ -163,15 +161,18 @@ extension DetailViewController: UITableViewDelegate {
         }
         
     }
+    
+//botao da forma que ficou na tableviewcell
     func showFavoriteButton() -> UITableViewCell {
         
             if isFavorite {
-                return self.setCellRemoveFavorites()
+                return self.setCellOkFavorites()
             } else {
                 return self.setCellAddFavorites()
             }
     }
     
+//funcao que verifica os dados no coredata
     func verifyFavorite() {
         
         let context = DataBaseController.persistentContainer.viewContext
@@ -232,33 +233,4 @@ extension DetailViewController: UITableViewDelegate {
             self.tabelaFilmes.reloadData()
         }
     }
-    
-    func removeFavorite() {
-        guard let movieidentifier = sGTocado.title else { return }
-        
-        let fetchRequest = InfosFilmesCD.fetchRequest()
-        
-        let predicate = NSPredicate(format: "movieidentifier == %@", movieidentifier)
-        fetchRequest.predicate = predicate
-
-        fetchRequest.includesPropertyValues = false
-
-        let context = DataBaseController.persistentContainer.viewContext
-
-        if let objects = try? context.fetch(fetchRequest) {
-            
-        
-            for object in objects {
-                context.delete(object)
-            }
-        }
-        
-        try? context.save()
-        
-        isFavorite = false
-        
-        self.tabelaFilmes.reloadData()
-        
-    }
-    
 }
