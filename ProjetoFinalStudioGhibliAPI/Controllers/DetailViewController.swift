@@ -33,6 +33,10 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = UIColor.meuRosa()
         self.tabelaFilmes.backgroundColor = .meuRosa()
        
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 80))
+        footer.backgroundColor = .meuRoxo()
+        tabelaFilmes.tableFooterView = footer
+        
         //verifyFavorite()
     }
     
@@ -41,29 +45,18 @@ class DetailViewController: UIViewController {
 //determinando numero de itens
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return 11
     }
             
-//colocando o header
-           // func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-           //     let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! TableHeader
-                //view.image.image = UIImage()
-            //    view.title.text = String(describing: section)
-            //    return view
-           // }
- 
-            func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                return 300.0
-            }
 //determinando o conteúdo das células
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
         cell.detailTextLabel?.textAlignment = .justified
-        cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         cell.detailTextLabel?.textColor = .meuCinza()
         cell.backgroundColor = .meuRosa()
+        cell.detailTextLabel?.font =  UIFont(name: "Kohinoor Bangla Semibold", size: 16.0)
         
         switch indexPath.row {
         case 0:
@@ -117,8 +110,6 @@ extension DetailViewController: UITableViewDataSource {
            return cellbanner
         case 10:
             return self.showFavoriteButton()
-    //        self.present(savedAlertok, animated: true)
-
         
             default:
             return UITableViewCell()
@@ -132,9 +123,11 @@ extension DetailViewController: UITableViewDataSource {
        let cell = FavoriteTableViewCell()
         
         cell.imageView?.image = UIImage(systemName: "star.fill")
-        cell.imageView?.tintColor = .meuRoxo()
-        
+        cell.imageView?.tintColor = .yellow
+        cell.detailTextLabel?.textColor = .white
+        cell.textLabel?.textAlignment = .center
         cell.textLabel?.text = "Add to favorites"
+        cell.backgroundColor = .meuRoxo()
         
         
         return cell
@@ -143,10 +136,10 @@ extension DetailViewController: UITableViewDataSource {
     func setCellRemoveFavorites() -> UITableViewCell {
         let cell = FavoriteTableViewCell()
          
-         cell.imageView?.image = UIImage(systemName: "star.slash.fill")
+        cell.imageView?.image = UIImage(systemName: "star.slash.fill")
         cell.imageView?.tintColor = .meuRoxo()
          
-         cell.textLabel?.text = "Remove to favorites"
+        cell.textLabel?.text = "Remove to favorites"
          
          
          return cell

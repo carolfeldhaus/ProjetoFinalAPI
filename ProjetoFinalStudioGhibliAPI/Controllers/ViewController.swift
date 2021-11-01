@@ -44,6 +44,10 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.meuRosa()
         self.tabelaFilmes.backgroundColor = .clear
+        
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 80))
+        footer.backgroundColor = .meuRoxo()
+        tabelaFilmes.tableFooterView = footer
     }
     
 //criando funcao para popular a api
