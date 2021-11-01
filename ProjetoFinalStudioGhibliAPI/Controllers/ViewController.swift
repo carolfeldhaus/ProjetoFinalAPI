@@ -89,10 +89,10 @@ class ViewController: UIViewController {
 //botao que leva aos favoritos
     func createRightBarButton() {
         
-        let heartImage = UIImage(systemName: "heart.fill")
+        let heartImage = UIImage(systemName: "star.fill")
         
         let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavoritos))
-        rightButton.tintColor = .red
+        rightButton.tintColor = .yellow
         
         self.navigationItem.rightBarButtonItem = rightButton
     }
@@ -104,6 +104,7 @@ class ViewController: UIViewController {
     
 }
 
+//MARK: UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,6 +148,7 @@ extension ViewController: UITableViewDataSource {
     
 }
 
+//MARK: UITableViewDelegate
 //mandando para a tela de detalhes
 extension ViewController: UITableViewDelegate {
     

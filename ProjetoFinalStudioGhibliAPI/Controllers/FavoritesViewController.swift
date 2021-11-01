@@ -32,13 +32,17 @@ class FavoritesViewController: UIViewController {
         
         view.addSubview(self.tabelaFilmes)
         
+        self.title = "Favorites"
+        
         self.view.backgroundColor = UIColor.meuRosa()
         self.tabelaFilmes.backgroundColor = .meuRosa()
         
         let nibFavorite = UINib(nibName: "FavoriteTableViewCell", bundle: nil)
         tabelaFilmes.register(nibFavorite, forCellReuseIdentifier: FavoriteTableViewCell.favoriteCell)
         
-        self.title = "Favorites"
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 80))
+        footer.backgroundColor = .meuRoxo()
+        tabelaFilmes.tableFooterView = footer
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +55,7 @@ class FavoritesViewController: UIViewController {
         do {
             self.favoriteSG = try DataBaseController.persistentContainer.viewContext.fetch(InfosFilmesCD.fetchRequest())
         } catch {
-            print("Não consegui trazer informações do banco de dados!")
+            print("Erro no banco de dados")
         }
         self.tabelaFilmes.reloadData()
     }
@@ -61,6 +65,7 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+//MARK: UITableViewDataSource
 extension FavoritesViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -99,7 +104,15 @@ extension FavoritesViewController: UITableViewDataSource {
         }
 }
 
+//MARK: UITableViewDelegate
 extension FavoritesViewController: UITableViewDelegate {
+   
+//deletar dos favoritos
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        self.favoriteSG.remove(at: indexPath.row)
+        tabelaFilmes.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()

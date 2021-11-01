@@ -12,6 +12,11 @@
         <attribute name="cdrt_score" optional="YES" attributeType="String"/>
         <attribute name="cdrunning_time" optional="YES" attributeType="String"/>
         <attribute name="cdtitle" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="cdid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="InfosFilmesCD" positionX="-54" positionY="-9" width="128" height="194"/>

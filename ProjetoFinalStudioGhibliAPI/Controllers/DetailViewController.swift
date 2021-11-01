@@ -41,6 +41,7 @@ class DetailViewController: UIViewController {
     
 }
 
+//MARK: UITableViewDataSource
 //determinando numero de itens
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,7 +120,7 @@ extension DetailViewController: UITableViewDataSource {
     }
 
 //configurando os botoes de adicionar e remover fav
-    func setCellAddFavorites() -> UITableViewCell {
+    func cellAddFavorites() -> UITableViewCell {
        let cell = FavoriteTableViewCell()
         
         cell.imageView?.image = UIImage(systemName: "star.fill")
@@ -132,14 +133,12 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
     
-    func setCellRemoveFavorites() -> UITableViewCell {
+    func cellOkFavorites() -> UITableViewCell {
         let cell = FavoriteTableViewCell()
          
-        cell.imageView?.image = UIImage(systemName: "star.slash.fill")
-        cell.imageView?.tintColor = .yellow
         cell.detailTextLabel?.textColor = .white
         cell.textLabel?.textAlignment = .center
-        cell.textLabel?.text = "Remove to favorites"
+        cell.textLabel?.text = "Is already add!"
         cell.backgroundColor = .meuRoxo()
          
          return cell
@@ -147,6 +146,7 @@ extension DetailViewController: UITableViewDataSource {
     
 }
 
+//MARK: UITableViewDelegate
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -155,7 +155,7 @@ extension DetailViewController: UITableViewDelegate {
         
        if indexPath.row == 10 {
            if isFavorite {
-               setCellRemoveFavorites()
+               cellOkFavorites()
            } else {
                addFavorites()
            }
@@ -168,9 +168,9 @@ extension DetailViewController: UITableViewDelegate {
     func showFavoriteButton() -> UITableViewCell {
         
             if isFavorite {
-                return self.setCellRemoveFavorites()
+                return self.cellOkFavorites()
             } else {
-                return self.setCellAddFavorites()
+                return self.cellAddFavorites()
             }
     }
     
@@ -235,4 +235,5 @@ extension DetailViewController: UITableViewDelegate {
             self.tabelaFilmes.reloadData()
         }
     }
+    
 }
