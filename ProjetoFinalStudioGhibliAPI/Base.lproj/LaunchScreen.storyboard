@@ -16,16 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="totoro" translatesAutoresizingMaskIntoConstraints="NO" id="x0S-pn-Ylo">
-                                <rect key="frame" x="42" y="282" width="330" height="142"/>
+                                <rect key="frame" x="22" y="144" width="370" height="476"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.57658076290000004" green="0.43885189289999998" blue="0.86004447939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x0S-pn-Ylo" secondAttribute="bottom" constant="438" id="0yE-mu-68b"/>
-                            <constraint firstItem="x0S-pn-Ylo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="MIn-cr-Ejw"/>
-                            <constraint firstItem="x0S-pn-Ylo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="238" id="q9X-TN-pCR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x0S-pn-Ylo" secondAttribute="trailing" constant="42" id="rRS-nz-Wu0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x0S-pn-Ylo" secondAttribute="trailing" constant="22" id="5dd-T3-cXS"/>
+                            <constraint firstItem="x0S-pn-Ylo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="rxR-dq-ycL"/>
+                            <constraint firstItem="x0S-pn-Ylo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="yKu-7W-SeT"/>
                         </constraints>
                     </view>
                 </viewController>
