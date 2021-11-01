@@ -22,7 +22,7 @@ O objetivo do meu app é listar todos os filmes do Studio Ghibli, mostrar os det
 ###Telas
 
 >Launchscreen:
-<img src="https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%201.png" "width=100">
+![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%201.png)
 
 >Tela inicial
 ![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%202.png)
