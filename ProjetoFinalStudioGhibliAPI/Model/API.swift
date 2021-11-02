@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct API {
+class API: sGAPI {
+    
     
 //inserindo as urls da api
   let baseURL = "https://ghibliapi.herokuapp.com"
     
-    var setSGURL: String {
+    func setSGURL() -> String {
         return "\(baseURL)/\(EndPoints.films)"
     }
     

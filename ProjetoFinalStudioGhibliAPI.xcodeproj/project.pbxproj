@@ -12,9 +12,7 @@
 		820534BD272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 820534BB272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI.xcdatamodeld */; };
 		820534BF272F05AF00C68686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 820534BE272F05AF00C68686 /* Assets.xcassets */; };
 		820534C2272F05AF00C68686 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820534C0272F05AF00C68686 /* LaunchScreen.storyboard */; };
-		820534CD272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534CC272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.swift */; };
-		820534D7272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534D6272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.swift */; };
-		820534D9272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534D8272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITestsLaunchTests.swift */; };
+		820534CD272F05AF00C68686 /* StudioGhibliAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534CC272F05AF00C68686 /* StudioGhibliAPITests.swift */; };
 		820534E7272F05F200C68686 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534E6272F05F200C68686 /* API.swift */; };
 		820534E9272F061000C68686 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534E8272F061000C68686 /* Error.swift */; };
 		820534EB272F063000C68686 /* StudioGhibli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820534EA272F063000C68686 /* StudioGhibli.swift */; };
@@ -32,17 +30,12 @@
 		828B7A39272F1A6900D75FC5 /* ImageFilme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828B7A38272F1A6900D75FC5 /* ImageFilme.swift */; };
 		82B37E0F273033570088F739 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B37E0E273033570088F739 /* FavoriteTableViewCell.swift */; };
 		82B37E112730336E0088F739 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B37E102730336E0088F739 /* FavoriteTableViewCell.xib */; };
+		82B37E132730C12C0088F739 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B37E122730C12B0088F739 /* IntegrationTests.swift */; };
+		82B37E152730C63A0088F739 /* sGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B37E142730C63A0088F739 /* sGAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		820534C9272F05AF00C68686 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 820534A7272F05AC00C68686 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 820534AE272F05AC00C68686;
-			remoteInfo = ProjetoFinalStudioGhibliAPI;
-		};
-		820534D3272F05AF00C68686 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 820534A7272F05AC00C68686 /* Project object */;
 			proxyType = 1;
@@ -60,10 +53,7 @@
 		820534C1272F05AF00C68686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		820534C3272F05AF00C68686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		820534C8272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetoFinalStudioGhibliAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		820534CC272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalStudioGhibliAPITests.swift; sourceTree = "<group>"; };
-		820534D2272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetoFinalStudioGhibliAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		820534D6272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalStudioGhibliAPIUITests.swift; sourceTree = "<group>"; };
-		820534D8272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalStudioGhibliAPIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		820534CC272F05AF00C68686 /* StudioGhibliAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioGhibliAPITests.swift; sourceTree = "<group>"; };
 		820534E6272F05F200C68686 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		820534E8272F061000C68686 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		820534EA272F063000C68686 /* StudioGhibli.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioGhibli.swift; sourceTree = "<group>"; };
@@ -79,6 +69,8 @@
 		828B7A38272F1A6900D75FC5 /* ImageFilme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilme.swift; sourceTree = "<group>"; };
 		82B37E0E273033570088F739 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		82B37E102730336E0088F739 /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
+		82B37E122730C12B0088F739 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		82B37E142730C63A0088F739 /* sGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sGAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,13 +90,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		820534CF272F05AF00C68686 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -113,7 +98,6 @@
 			children = (
 				820534B1272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI */,
 				820534CB272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests */,
-				820534D5272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests */,
 				820534B0272F05AC00C68686 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,7 +107,6 @@
 			children = (
 				820534AF272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI.app */,
 				820534C8272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.xctest */,
-				820534D2272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,18 +129,10 @@
 		820534CB272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests */ = {
 			isa = PBXGroup;
 			children = (
-				820534CC272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.swift */,
+				820534CC272F05AF00C68686 /* StudioGhibliAPITests.swift */,
+				82B37E122730C12B0088F739 /* IntegrationTests.swift */,
 			);
 			path = ProjetoFinalStudioGhibliAPITests;
-			sourceTree = "<group>";
-		};
-		820534D5272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests */ = {
-			isa = PBXGroup;
-			children = (
-				820534D6272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.swift */,
-				820534D8272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITestsLaunchTests.swift */,
-			);
-			path = ProjetoFinalStudioGhibliAPIUITests;
 			sourceTree = "<group>";
 		};
 		820534E5272F05DE00C68686 /* Model */ = {
@@ -170,6 +145,7 @@
 				820534EE272F067400C68686 /* HTTPMetodo.swift */,
 				820534F0272F068900C68686 /* UIColor.swift */,
 				828B7A38272F1A6900D75FC5 /* ImageFilme.swift */,
+				82B37E142730C63A0088F739 /* sGAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,24 +215,6 @@
 			productReference = 820534C8272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		820534D1272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 820534E2272F05AF00C68686 /* Build configuration list for PBXNativeTarget "ProjetoFinalStudioGhibliAPIUITests" */;
-			buildPhases = (
-				820534CE272F05AF00C68686 /* Sources */,
-				820534CF272F05AF00C68686 /* Frameworks */,
-				820534D0272F05AF00C68686 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				820534D4272F05AF00C68686 /* PBXTargetDependency */,
-			);
-			name = ProjetoFinalStudioGhibliAPIUITests;
-			productName = ProjetoFinalStudioGhibliAPIUITests;
-			productReference = 820534D2272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -271,10 +229,6 @@
 						CreatedOnToolsVersion = 13.1;
 					};
 					820534C7272F05AF00C68686 = {
-						CreatedOnToolsVersion = 13.1;
-						TestTargetID = 820534AE272F05AC00C68686;
-					};
-					820534D1272F05AF00C68686 = {
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = 820534AE272F05AC00C68686;
 					};
@@ -299,7 +253,6 @@
 			targets = (
 				820534AE272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI */,
 				820534C7272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests */,
-				820534D1272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -323,13 +276,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		820534D0272F05AF00C68686 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -344,6 +290,7 @@
 				820534B3272F05AC00C68686 /* AppDelegate.swift in Sources */,
 				8251A182272F0CBB00327CF3 /* CelulaCustomizadaMain.swift in Sources */,
 				82B37E0F273033570088F739 /* FavoriteTableViewCell.swift in Sources */,
+				82B37E152730C63A0088F739 /* sGAPI.swift in Sources */,
 				820534BD272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI.xcdatamodeld in Sources */,
 				820534E9272F061000C68686 /* Error.swift in Sources */,
 				820534E7272F05F200C68686 /* API.swift in Sources */,
@@ -360,16 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				820534CD272F05AF00C68686 /* ProjetoFinalStudioGhibliAPITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		820534CE272F05AF00C68686 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				820534D7272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITests.swift in Sources */,
-				820534D9272F05AF00C68686 /* ProjetoFinalStudioGhibliAPIUITestsLaunchTests.swift in Sources */,
+				82B37E132730C12C0088F739 /* IntegrationTests.swift in Sources */,
+				820534CD272F05AF00C68686 /* StudioGhibliAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,11 +319,6 @@
 			isa = PBXTargetDependency;
 			target = 820534AE272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI */;
 			targetProxy = 820534C9272F05AF00C68686 /* PBXContainerItemProxy */;
-		};
-		820534D4272F05AF00C68686 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 820534AE272F05AC00C68686 /* ProjetoFinalStudioGhibliAPI */;
-			targetProxy = 820534D3272F05AF00C68686 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -620,52 +554,6 @@
 			};
 			name = Release;
 		};
-		820534E3272F05AF00C68686 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ3L29UH3U;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = projetofinal.ProjetoFinalStudioGhibliAPIUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ProjetoFinalStudioGhibliAPI;
-			};
-			name = Debug;
-		};
-		820534E4272F05AF00C68686 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ3L29UH3U;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = projetofinal.ProjetoFinalStudioGhibliAPIUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ProjetoFinalStudioGhibliAPI;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -692,15 +580,6 @@
 			buildConfigurations = (
 				820534E0272F05AF00C68686 /* Debug */,
 				820534E1272F05AF00C68686 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		820534E2272F05AF00C68686 /* Build configuration list for PBXNativeTarget "ProjetoFinalStudioGhibliAPIUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				820534E3272F05AF00C68686 /* Debug */,
-				820534E4272F05AF00C68686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
