@@ -11,7 +11,7 @@ class DetailViewController: UIViewController {
     
     let reuseIdentifier = "Celula"
     var sGTocado: studioGhibli = studioGhibli()
-    var isFavorite: Bool = false
+   // var isFavorite: Bool = false
 
     lazy var tabelaFilmes: UITableView = {
 
@@ -36,9 +36,13 @@ class DetailViewController: UIViewController {
         footer.backgroundColor = .meuRoxo()
         tabelaFilmes.tableFooterView = footer
         
-        verifyFavorite()
+        _ = verifyFavorite()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabelaFilmes.reloadData()
+    }
 }
 
 //MARK: UITableViewDataSource
@@ -154,9 +158,7 @@ extension DetailViewController: UITableViewDelegate {
  //daqui pra baixo estou configurando os favoritos
         
        if indexPath.row == 10 {
-           if isFavorite {
-               cellOkFavorites()
-           } else {
+           if !verifyFavorite() {
                addFavorites()
            }
  
@@ -167,7 +169,7 @@ extension DetailViewController: UITableViewDelegate {
 //botao da forma que ficou na tableviewcell
     func showFavoriteButton() -> UITableViewCell {
         
-            if isFavorite {
+            if verifyFavorite() {
                 return self.cellOkFavorites()
             } else {
                 return self.cellAddFavorites()
@@ -178,6 +180,8 @@ extension DetailViewController: UITableViewDelegate {
     func verifyFavorite() -> Bool {
         
         let context = DataBaseController.persistentContainer.viewContext
+        
+        var isFavorite: Bool = false
         
         do {
             
@@ -197,8 +201,8 @@ extension DetailViewController: UITableViewDelegate {
             }
         } catch {
             print("Error")
-        }
         
+        }
         return isFavorite
     }
     
@@ -231,6 +235,7 @@ extension DetailViewController: UITableViewDelegate {
                 sgmovies.cdrt_score = cdrt_score
                 DataBaseController.saveContext()
                 self.tabelaFilmes.reloadData()
+                _ = verifyFavorite()
             }
         }
     }

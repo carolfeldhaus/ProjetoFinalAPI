@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         print("Tamanho: \(UIScreen.main.bounds)")
         
-        let controller = UINavigationController(rootViewController: ViewController())
+        let api = API()
+        
+        let controller = UINavigationController(rootViewController: ViewController(api: api))
         controller.navigationBar.standardAppearance = appearance;
         controller.navigationBar.scrollEdgeAppearance = controller.navigationBar.standardAppearance
     

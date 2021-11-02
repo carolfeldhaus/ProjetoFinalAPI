@@ -11,12 +11,15 @@ import Kingfisher
 class ViewController: UIViewController {
     
     var arrayDeFilmes: [studioGhibli] = []
-    let api = API()
+    var api: sGAPI?
     let reuseIdentifier = "Celula"
-
-
+    convenience init (api: sGAPI) {
+        self.init()
+        self.api = api
+    }
+    
     lazy var tabelaFilmes: UITableView = {
-
+        
         var tabela = UITableView()
         tabela.frame = self.view.bounds
         tabela.dataSource = self
@@ -26,10 +29,10 @@ class ViewController: UIViewController {
         tabela.register(nib, forCellReuseIdentifier: reuseIdentifier)
         
         return tabela
-
+        
     }()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,8 +40,6 @@ class ViewController: UIViewController {
         self.title = "Studio Ghibli Movies"
         
         self.view.addSubview(self.tabelaFilmes)
-        
-        self.populaArrayDeFilmes()
         
         self.createRightBarButton()
         
@@ -49,38 +50,58 @@ class ViewController: UIViewController {
         footer.backgroundColor = .meuRoxo()
         tabelaFilmes.tableFooterView = footer
         
+        apiGet()
+        
         
     }
     
-//criando funcao para popular a api
-        func populaArrayDeFilmes() {
-            api.getSG(urlString: api.setSGURL(), method: .GET) { modelresponse, error in
-
-                if let array = modelresponse {
-
-                    DispatchQueue.main.async {
-                        self.arrayDeFilmes = array
-                        //print(self.arrayDeFilmes.debugDescription)
-                        self.tabelaFilmes.reloadData()
-                    }
+    //criando funcao para popular a api
+    func getFilmes(completion: @escaping (Result<[studioGhibli], SGApiError>) -> Void) {
+        guard let mApi = self.api else { return }
+        
+        
+        mApi.getSG(urlString: mApi.setSGURL(), method: .GET) {
+            [weak self] result in
+            guard self != nil else { return }
+            switch result {
+            case .success(let filmes):
+                self?.arrayDeFilmes = filmes
+             
+                DispatchQueue.main.async {
+                self?.tabelaFilmes.reloadData()
                 }
-                switch error {
-                case .serverError: self.userAlert(mensagem: "No Internet connection")
-                default: break
-                }
+            case .failure (let error):
+                self?.userAlert(mensagem: "No Internet connection")
+                print(error)
             }
         }
+    }
     
-//funcao para mostrar erro de sem intenrnet na tela
+    private func apiGet(){
+        
+        self.getFilmes{ [weak self] result in
+            guard self != nil else { return }
+            switch result {
+            case .success(let filmes):
+                self?.arrayDeFilmes = filmes
+                self?.tabelaFilmes.reloadData()
+            case .failure (let error):
+                self?.userAlert(mensagem: "No Internet connection")
+                print(error)
+            }
+            
+        }
+    }
+    
+    //funcao para mostrar erro de sem intenrnet na tela
     func userAlert(mensagem: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Warning", message: mensagem, preferredStyle: .alert)
             
             let buttonBack = UIAlertAction(title: "Try Again", style: .default) { _ in
-                self.populaArrayDeFilmes()
-            }
+                self.apiGet()            }
             let buttonOk = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-
+            
             alert.addAction(buttonBack)
             alert.addAction(buttonOk)
             
@@ -90,7 +111,7 @@ class ViewController: UIViewController {
     
     
     
-//botao que leva aos favoritos
+    //botao que leva aos favoritos
     func createRightBarButton() {
         
         let heartImage = UIImage(systemName: "star.fill")
@@ -118,7 +139,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//editando a celula customizada
+        //editando a celula customizada
         let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath) as? CelulaCustomizadaMain
         
         
@@ -128,24 +149,24 @@ extension ViewController: UITableViewDataSource {
         cell?.uIDescription.numberOfLines = 0
         
         if let image = self.arrayDeFilmes[indexPath.row].image {
-                    
+            
             let url = URL(string: image)
-         
-//usando kingfisher para configurar a imagem
+            
+            //usando kingfisher para configurar a imagem
             cell?.uIImageMain.kf.setImage(with: url, options: [.transition(ImageTransition.fade(2.0)), .cacheOriginalImage],
                                           progressBlock: nil, completionHandler: { resultado in
-                    switch resultado {
-                    case .success(let image):
-                        print(image.cacheType)
-                    case .failure(let erro):
-                        print(erro.localizedDescription)
-                    }
-                })
+                switch resultado {
+                case .success(let image):
+                    print(image.cacheType)
+                case .failure(let erro):
+                    print(erro.localizedDescription)
+                }
+            })
         }
         return cell!
     }
     
-//configurando o tamanho da linha
+    //configurando o tamanho da linha
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 146.0
     }

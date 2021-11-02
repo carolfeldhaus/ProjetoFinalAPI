@@ -141,7 +141,7 @@ extension FavoritesViewController: UITableViewDelegate {
         var imagebanner = ImageFilme()
         imagebanner.url = favEntity.cdmovie_banner
         
-        var new: studioGhibli = studioGhibli()
+        let new: studioGhibli = studioGhibli()
         new.title = favEntity.cdtitle
         new.original_title = favEntity.cdoriginal_title
         new.image = imagemovie.url
@@ -153,6 +153,7 @@ extension FavoritesViewController: UITableViewDelegate {
         new.running_time = favEntity.cdrunning_time
         new.rt_score = favEntity.cdrt_score
         new.description = favEntity.cddescription
+        new.id = favEntity.cdid
         
         detail.sGTocado = new
         
