@@ -8,9 +8,9 @@
 import Foundation
 
 enum SGApiError: Error {
-     case emptyReponse
-     case notFound
-     case emptyArray
-     case serverError
-     case invalidResponse
+    case emptyReponse
+    case notFound
+    case emptyData
+    case serverError
+    case invalidData
  }

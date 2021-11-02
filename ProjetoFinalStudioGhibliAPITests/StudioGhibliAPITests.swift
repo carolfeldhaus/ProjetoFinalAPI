@@ -8,17 +8,17 @@
 import XCTest
 @testable import ProjetoFinalStudioGhibliAPI
 
-//duble
-//class APISpy: sGAPI {
+class testeapi: XCTestCase {
     
-  //  var apiCalls = 0
-    
-   // func setSGURL(_ id: Int) -> String {
-  //      return ""
-  //  }
-
- //   func getSG(urlString: String, method: HTTPMetodo, success: @escaping (studioGhibli) -> Void, failure: @escaping (SGApiError) -> Void) {
- //       apiCalls += 1
-//    }
-    
-//}
+    func testInitWillCallApiOnce() {
+        // Setup
+        let doubleApi = APISpy()
+        let sut = ViewController(api: doubleApi)
+        
+        // Exercise
+        sut.loadViewIfNeeded()
+        
+        // Verify
+        XCTAssertEqual(doubleApi.apiCalls, 1, "A API deve ser chamada somente uma vez")
+    }
+}

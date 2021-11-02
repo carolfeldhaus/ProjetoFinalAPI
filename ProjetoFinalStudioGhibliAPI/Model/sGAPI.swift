@@ -11,9 +11,6 @@ protocol sGAPI {
     
     func setSGURL() -> String
     
-//   func getSG(urlString: String, method: HTTPMetodo = HTTPMetodo.GET, response: @escaping ([studioGhibli]?, SGApiError?) -> Void)
+   func getSG(urlString: String, method: HTTPMetodo, completion: @escaping (Result<[studioGhibli], SGApiError>) -> Void)
 }
-
-//extension getSG {
-   // (urlString: String, method: HTTPMetodo) -> [studioGhibli]
 

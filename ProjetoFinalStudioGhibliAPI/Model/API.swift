@@ -9,7 +9,6 @@ import Foundation
 
 class API: sGAPI {
     
-    
 //inserindo as urls da api
   let baseURL = "https://ghibliapi.herokuapp.com"
     
@@ -17,71 +16,63 @@ class API: sGAPI {
         return "\(baseURL)/\(EndPoints.films)"
     }
     
-    func setPeopleSGURL() -> String {
-        return "\(baseURL)/\(EndPoints.people)"
-    }
-    
-    func setLocationsSGURL() -> String {
-        return "\(baseURL)/\(EndPoints.locations)"
-    }
-    
-    func setSpeciesSGURL() -> String {
-        return "\(baseURL)/\(EndPoints.species)"
-    }
-    
-    func setVehiclesURL() -> String {
-        return "\(baseURL)/\(EndPoints.vehicles)"
-    }
-    
 //fazendo o get da api
-    func getSG(urlString: String, method: HTTPMetodo = HTTPMetodo.GET, response: @escaping ([studioGhibli]?, SGApiError?) -> Void) {
+    func getSG(urlString: String, method: HTTPMetodo, completion: @escaping (Result<[studioGhibli], SGApiError>) -> Void) {
         
-        let config: URLSessionConfiguration = URLSessionConfiguration.default
+        // Criando array
+        var _: [studioGhibli] = []
+
+        // Criando request HTTP
+        // Criando config da sessão
+        let config: URLSessionConfiguration = .default
+
+        // Contruindo a sessão
         let session: URLSession = URLSession(configuration: config)
-        
-        guard let url: URL = URL(string: urlString) else { return }
-        var urlRequest: URLRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "\(method)"
-       
-        let task = session.dataTask(with: urlRequest, completionHandler: { (result, urlResponse, error) in
+
+        // Criando a URL
+        guard let url: URL = URL(string: urlString) else {
+            return
+        }
+
+        // URL request
+        let urlRequest: URLRequest = URLRequest(url: url)
+
+        let task = session.dataTask(with: urlRequest) { result, urlResponse, error in
+
             var statusCode: Int = 0
-            
             if let response = urlResponse as? HTTPURLResponse {
                 statusCode = response.statusCode
+                print(statusCode)
             }
-            
+
             guard let data = result else {
-                
-//fazendo os erros
-                response(nil, SGApiError.emptyReponse)
+                completion(Result.failure(SGApiError.emptyData))
                 return
             }
-            
+
             do {
                 
-                let decoder = JSONDecoder()
-                let decodableData: [studioGhibli] = try decoder.decode([studioGhibli].self, from: data)
-                if decodableData.count < 1 {
-                    response(nil, SGApiError.emptyArray)
-                }
+                // Criando um decoder
+                let decoder: JSONDecoder = JSONDecoder()
                 
+                // Decodificar
+                let decodeData: [studioGhibli] = try decoder.decode([studioGhibli].self, from: data)
+
                 switch statusCode {
                 case 200:
-                    response(decodableData, nil)
+                    completion(Result.success(decodeData))
                 case 404:
-                    response(nil, SGApiError.notFound)
-                    return
+                    completion(Result.failure(SGApiError.notFound))
                 case 500:
-                    response(nil, SGApiError.serverError)
-                    return
+                    completion(Result.failure(SGApiError.serverError))
                 default:
                     break
                 }
-                
             } catch {
-                response(nil, SGApiError.invalidResponse)
+                completion(Result.failure(SGApiError.invalidData))
             }
-        })
+        }
         task.resume()
     }
 }
+

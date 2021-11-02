@@ -6,34 +6,41 @@
 //
 
 import XCTest
-
 @testable import ProjetoFinalStudioGhibliAPI
+
+// Criando um duble de testes
+class APISpy: API {
+    
+    var apiCalls = 0
+    
+    func setBreedURL() -> String {
+        return ""
+    }
+    
+    func getCats(urlString: String, method: HTTPMetodo, completion: @escaping (Result<[studioGhibli], SGApiError>) -> Void) {
+        apiCalls += 1
+    }
+   
+}
 
 class IntegrationTests: XCTestCase {
 
     func testApiIntegration() {
-            let sut = ViewController()
-            sut.loadViewIfNeeded()
-
-            sut.populaArrayDeFilmes()
-
-            let expect = expectation(description: "Aguardando")
-
-            DispatchQueue.global(qos: .userInitiated).async {
-              
-                sleep(3)
-               
-                print("Verificando")
-                guard sut.arrayDeFilmes.count > 0 else {
-                    XCTFail()
-                    expect.fulfill()
-                    return
-                }
-                let teste = sut.arrayDeFilmes[0].title?.count ?? 0
-                XCTAssertTrue(teste > 0)
-                expect.fulfill()
-            }
-
-            wait(for: [expect], timeout: 10.0)
+        // Setup
+        let api = API()
+        let sut = ViewController(api: api)
+        sut.loadViewIfNeeded()
+        
+        //Exercise
+        sleep(5)
+        guard sut.arrayDeFilmes.count > 0 else {
+            XCTFail()
+            return
         }
+        
+        // Verify
+        let charactersFromTheFirstMovie = sut.arrayDeFilmes[0].title?.count ?? 0
+        XCTAssertTrue(charactersFromTheFirstMovie > 0)
+    }
+
 }
