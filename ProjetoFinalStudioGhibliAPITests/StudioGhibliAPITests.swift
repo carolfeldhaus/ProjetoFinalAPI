@@ -9,16 +9,16 @@ import XCTest
 @testable import ProjetoFinalStudioGhibliAPI
 
 //duble
-class APISpy: sGAPI {
+//class APISpy: sGAPI {
     
-    var apiCalls = 0
+  //  var apiCalls = 0
     
-    func setSGURL(_ id: Int) -> String {
-        return ""
-    }
+   // func setSGURL(_ id: Int) -> String {
+  //      return ""
+  //  }
 
-    func getSG(urlString: String, method: HTTPMetodo, success: @escaping (studioGhibli) -> Void, failure: @escaping (SGApiError) -> Void) {
-        apiCalls += 1
-    }
+ //   func getSG(urlString: String, method: HTTPMetodo, success: @escaping (studioGhibli) -> Void, failure: @escaping (SGApiError) -> Void) {
+ //       apiCalls += 1
+//    }
     
-}
+//}

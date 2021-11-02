@@ -119,7 +119,7 @@ extension DetailViewController: UITableViewDataSource {
         return cell
     }
 
-//configurando os botoes de adicionar e remover fav
+//configurando os botoes de adicionar
     func cellAddFavorites() -> UITableViewCell {
        let cell = FavoriteTableViewCell()
         
@@ -175,34 +175,36 @@ extension DetailViewController: UITableViewDelegate {
     }
     
 //funcao que verifica os dados no coredata
-    func verifyFavorite() {
+    func verifyFavorite() -> Bool {
         
         let context = DataBaseController.persistentContainer.viewContext
         
         do {
             
-            guard let cdid = sGTocado.id else { return }
+            if let cdid = sGTocado.id {
             
-            let fetchRequest = InfosFilmesCD.fetchRequest()
-            
-            let predicate = NSPredicate(format: "cdid == %@", cdid)
-            fetchRequest.predicate = predicate
-            
-            let favoritefilm = try context.fetch(fetchRequest)
-            if favoritefilm.count > 0 {
-                isFavorite = true
-            } else {
-                isFavorite = false
+                let fetchRequest = InfosFilmesCD.fetchRequest()
+                
+                let predicate = NSPredicate(format: "cdid == %@", cdid)
+                fetchRequest.predicate = predicate
+                
+                let favoritefilm = try context.fetch(fetchRequest)
+                if favoritefilm.count > 0 {
+                    isFavorite = true
+                } else {
+                    isFavorite = false
+                }
             }
-            
         } catch {
             print("Error")
         }
+        
+        return isFavorite
     }
-
     
     func addFavorites() {
-        if let cdtitle = sGTocado.title,
+        if let cdid = sGTocado.id,
+           let cdtitle = sGTocado.title,
            let cdoriginal_title = sGTocado.original_title,
            let cdimage = sGTocado.image,
            let cdmovie_banner = sGTocado.movie_banner,
@@ -213,26 +215,23 @@ extension DetailViewController: UITableViewDelegate {
            let cdrunning_time = sGTocado.running_time,
            let cdrt_score = sGTocado.rt_score {
             
-            let context = DataBaseController.persistentContainer.viewContext
-            
-            let sgmovies = InfosFilmesCD(context: context)
-            
-            sgmovies.cdtitle = cdtitle
-            sgmovies.cdoriginal_title = cdoriginal_title
-            sgmovies.cdimage = cdimage
-            sgmovies.cdmovie_banner = cdmovie_banner
-            sgmovies.cddescription = cddescription
-            sgmovies.cddirector = cddirector
-            sgmovies.cdproducer = cdproducer
-            sgmovies.cdrelease_date = cdrelease_date
-            sgmovies.cdrunning_time = cdrunning_time
-            sgmovies.cdrt_score = cdrt_score
-            
-            DataBaseController.saveContext()
-            
-            isFavorite = true
-            
-            self.tabelaFilmes.reloadData()
+            if !self.verifyFavorite() {
+                let context = DataBaseController.persistentContainer.viewContext
+                let sgmovies = InfosFilmesCD(context: context)
+                sgmovies.cdid = cdid
+                sgmovies.cdtitle = cdtitle
+                sgmovies.cdoriginal_title = cdoriginal_title
+                sgmovies.cdimage = cdimage
+                sgmovies.cdmovie_banner = cdmovie_banner
+                sgmovies.cddescription = cddescription
+                sgmovies.cddirector = cddirector
+                sgmovies.cdproducer = cdproducer
+                sgmovies.cdrelease_date = cdrelease_date
+                sgmovies.cdrunning_time = cdrunning_time
+                sgmovies.cdrt_score = cdrt_score
+                DataBaseController.saveContext()
+                self.tabelaFilmes.reloadData()
+            }
         }
     }
     

@@ -141,20 +141,20 @@ extension FavoritesViewController: UITableViewDelegate {
         var imagebanner = ImageFilme()
         imagebanner.url = favEntity.cdmovie_banner
         
-        var newTouched: studioGhibli = studioGhibli()
-        newTouched.title = favEntity.cdtitle
-        newTouched.original_title = favEntity.cdoriginal_title
-        newTouched.image = imagemovie.url
-        newTouched.movie_banner = imagebanner.url
-        newTouched.description = favEntity.description
-        newTouched.director = favEntity.cddirector
-        newTouched.producer = favEntity.cdproducer
-        newTouched.release_date = favEntity.cdrelease_date
-        newTouched.running_time = favEntity.cdrunning_time
-        newTouched.rt_score = favEntity.cdrt_score
-        newTouched.description = favEntity.cddescription
+        var new: studioGhibli = studioGhibli()
+        new.title = favEntity.cdtitle
+        new.original_title = favEntity.cdoriginal_title
+        new.image = imagemovie.url
+        new.movie_banner = imagebanner.url
+        new.description = favEntity.description
+        new.director = favEntity.cddirector
+        new.producer = favEntity.cdproducer
+        new.release_date = favEntity.cdrelease_date
+        new.running_time = favEntity.cdrunning_time
+        new.rt_score = favEntity.cdrt_score
+        new.description = favEntity.cddescription
         
-        detail.sGTocado = newTouched
+        detail.sGTocado = new
         
         self.show(detail, sender: self)
     }
