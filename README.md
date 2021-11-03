@@ -21,19 +21,26 @@ O objetivo do meu app é listar todos os filmes do Studio Ghibli, mostrar os det
 
 ### Telas
 
->Launchscreen:
 ![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%201.png)
+<p>
+<i>Launchscreen
+  <p>
 
->Tela inicial
 ![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%202.png)
-
->Detalhes
+<p>
+Tela inicial
+ <p>
+  
 ![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%203.png)
 
-> Continuação detalhes
 ![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%204.png)
+<p> 
+Detalhes
+  <p>
 
->Favoritos
 ![](https://github.com/carolfeldhaus/ProjetoFinalAPI/blob/main/Simulator%205.png)
+<p>
+Favoritos
+  <p> </i>
 
 ### End
