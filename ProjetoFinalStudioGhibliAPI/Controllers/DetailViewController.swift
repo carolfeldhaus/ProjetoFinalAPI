@@ -11,7 +11,6 @@ class DetailViewController: UIViewController {
     
     let reuseIdentifier = "Celula"
     var sGTocado: studioGhibli = studioGhibli()
-   // var isFavorite: Bool = false
 
     lazy var tabelaFilmes: UITableView = {
 
@@ -129,7 +128,7 @@ extension DetailViewController: UITableViewDataSource {
         
         cell.imageView?.image = UIImage(systemName: "star.fill")
         cell.imageView?.tintColor = .yellow
-        cell.detailTextLabel?.textColor = .white
+        cell.textLabel?.textColor = .white
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.text = "Add to favorites"
         cell.backgroundColor = .meuRoxo()
@@ -140,7 +139,7 @@ extension DetailViewController: UITableViewDataSource {
     func cellOkFavorites() -> UITableViewCell {
         let cell = FavoriteTableViewCell()
          
-        cell.detailTextLabel?.textColor = .white
+        cell.textLabel?.textColor = .white
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.text = "Is already add!"
         cell.backgroundColor = .meuRoxo()

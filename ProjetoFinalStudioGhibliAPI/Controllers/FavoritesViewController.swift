@@ -55,7 +55,7 @@ class FavoritesViewController: UIViewController {
         do {
             self.favoriteSG = try DataBaseController.persistentContainer.viewContext.fetch(InfosFilmesCD.fetchRequest())
         } catch {
-            print("Erro no banco de dados")
+            print("Erro no CoreData")
         }
         self.tabelaFilmes.reloadData()
     }

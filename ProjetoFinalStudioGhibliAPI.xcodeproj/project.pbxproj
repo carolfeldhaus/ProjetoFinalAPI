@@ -138,9 +138,9 @@
 		820534E5272F05DE00C68686 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				820534EA272F063000C68686 /* StudioGhibli.swift */,
 				820534E6272F05F200C68686 /* API.swift */,
 				820534E8272F061000C68686 /* Error.swift */,
-				820534EA272F063000C68686 /* StudioGhibli.swift */,
 				820534EC272F065B00C68686 /* EndPoints.swift */,
 				820534EE272F067400C68686 /* HTTPMetodo.swift */,
 				820534F0272F068900C68686 /* UIColor.swift */,

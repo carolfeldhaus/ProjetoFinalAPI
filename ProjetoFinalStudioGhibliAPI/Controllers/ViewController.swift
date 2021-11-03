@@ -57,8 +57,8 @@ class ViewController: UIViewController {
     
     //criando funcao para popular a api
     func getFilmes(completion: @escaping (Result<[studioGhibli], SGApiError>) -> Void) {
+      
         guard let mApi = self.api else { return }
-        
         
         mApi.getSG(urlString: mApi.setSGURL(), method: .GET) {
             [weak self] result in
@@ -114,9 +114,9 @@ class ViewController: UIViewController {
     //botao que leva aos favoritos
     func createRightBarButton() {
         
-        let heartImage = UIImage(systemName: "star.fill")
+        let starImage = UIImage(systemName: "star.fill")
         
-        let rightButton = UIBarButtonItem(image: heartImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavoritos))
+        let rightButton = UIBarButtonItem(image: starImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavoritos))
         rightButton.tintColor = .yellow
         
         self.navigationItem.rightBarButtonItem = rightButton

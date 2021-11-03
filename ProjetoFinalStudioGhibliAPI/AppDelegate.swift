@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
 //configurando a navigationbar
-          UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().isTranslucent = false
        
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

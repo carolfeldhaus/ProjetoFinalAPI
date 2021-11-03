@@ -59,10 +59,16 @@ class API: sGAPI {
                 let decodeData: [studioGhibli] = try decoder.decode([studioGhibli].self, from: data)
 
                 switch statusCode {
+                
+                //tudo ok e funcionando
                 case 200:
                     completion(Result.success(decodeData))
+                
+                //Not found - nao encontrado
                 case 404:
                     completion(Result.failure(SGApiError.notFound))
+                
+                //Internet server error
                 case 500:
                     completion(Result.failure(SGApiError.serverError))
                 default:

@@ -20,7 +20,7 @@ class CelulaCustomizadaMain: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-//usando SnaoKit para as constraints
+//usando SnapKit para as constraints
         uITituloMain.snp.makeConstraints { make in
             
             make.top.equalTo(self).offset(10)
