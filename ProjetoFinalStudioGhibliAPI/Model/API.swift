@@ -62,7 +62,8 @@ class API: sGAPI {
                 
                 //tudo ok e funcionando
                 case 200:
-                    completion(Result.success(decodeData))
+                    //completion(Result.success(decodeData))
+                    completion(Result.failure(SGApiError.serverError))
                 
                 //Not found - nao encontrado
                 case 404:

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let api = API()
         
-        let controller = UINavigationController(rootViewController: ViewController(api: api))
+        let controller = UINavigationController(rootViewController: HomeViewController())
         controller.navigationBar.standardAppearance = appearance;
         controller.navigationBar.scrollEdgeAppearance = controller.navigationBar.standardAppearance
     

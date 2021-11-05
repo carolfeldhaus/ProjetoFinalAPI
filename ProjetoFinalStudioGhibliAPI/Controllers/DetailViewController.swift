@@ -141,7 +141,7 @@ extension DetailViewController: UITableViewDataSource {
          
         cell.textLabel?.textColor = .white
         cell.textLabel?.textAlignment = .center
-        cell.textLabel?.text = "Is already add!"
+        cell.textLabel?.text = "Is already added!"
         cell.backgroundColor = .meuRoxo()
          
          return cell
